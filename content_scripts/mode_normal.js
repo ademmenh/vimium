@@ -75,14 +75,6 @@ const enterNormalMode = function (count) {
   return mode;
 };
 
-function findSelectedHelper(backwards) {
-  const selection = window.getSelection().toString();
-  if (!selection) return;
-  FindMode.updateQuery(selection);
-  FindMode.saveQuery();
-  FindMode.findNext(backwards);
-}
-
 const NormalModeCommands = {
   // Scrolling.
   scrollToBottom() {
@@ -224,12 +216,20 @@ const NormalModeCommands = {
     }
   },
 
+  findSelectedHelper(backwards) {
+    const selection = window.getSelection().toString();
+    if (!selection) return;
+    FindMode.updateQuery(selection);
+    FindMode.saveQuery();
+    return FindMode.findNext(backwards);
+  },
+
   findSelected() {
-    findSelectedHelper(false);
+    this.findSelectedHelper(false);
   },
 
   findSelectedBackwards() {
-    findSelectedHelper(true);
+    this.findSelectedHelper(true);
   },
 
   // Misc.
