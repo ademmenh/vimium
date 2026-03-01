@@ -1,11 +1,14 @@
+/* macOS Ventura – Help Dialog Theme */
+
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--mac-font-family);
 }
 
 #container {
-  background-color: white;
-  border: 2px solid #b3b3b3;
-  border-radius: 6px;
+  background-color: var(--mac-bg-tertiary);
+  border: 1px solid var(--mac-border-light);
+  border-radius: var(--mac-radius-window);
+  box-shadow: var(--mac-shadow-md);
   width: 840px;
   max-width: calc(100% - 100px);
   max-height: calc(100% - 100px);
@@ -16,12 +19,13 @@ body {
 
 #dialog {
   min-width: 600px;
-  padding: 8px 12px;
+  padding: var(--mac-space-3) var(--mac-space-4);
+  color: var(--mac-text-primary);
 }
 
 a {
   text-decoration: underline;
-  color: #2f508e;
+  color: var(--mac-accent);
   cursor: pointer;
 }
 
@@ -34,34 +38,36 @@ header {
 a#close {
   font-family: "courier new", monospace;
   font-weight: bold;
-  color: #555;
+  color: var(--mac-text-tertiary);
   text-decoration: none;
   font-size: 24px;
   position: relative;
   top: 3px;
   padding-left: 5px;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 
 a#close:hover {
-  color: black;
+  color: var(--mac-text-primary);
   -webkit-user-select: none;
+  user-select: none;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: var(--mac-font-size-title-1);
   white-space: nowrap;
   flex-grow: 1;
-  font-weight: normal;
+  font-weight: var(--mac-font-weight-medium);
   margin: 4px 0;
 }
 
 h1 .vim {
-  color: #2f508e;
+  color: var(--mac-accent);
 }
 
 header a {
-  font-size: 14px;
+  font-size: var(--mac-font-size-body);
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -85,8 +91,8 @@ header a.close {
 h2 {
   margin-top: 3px;
   margin-bottom: 4px;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: var(--mac-font-size-title-2);
+  font-weight: var(--mac-font-weight-semibold);
 }
 
 div[data-group] {
@@ -98,14 +104,15 @@ div[data-group] {
 }
 
 .help-description {
-  font-size: 14px;
+  font-size: var(--mac-font-size-body);
+  color: var(--mac-text-secondary);
 }
 
 div.divider {
   height: 1px;
   width: 100%;
-  margin: 10px auto;
-  background-color: #9a9a9a;
+  margin: var(--mac-space-3) auto;
+  background-color: var(--mac-border-medium);
 }
 
 /* Advanced commands are hidden by default until "show advanced" is clicked. */
@@ -118,7 +125,7 @@ div.divider {
 }
 
 footer {
-  font-size: 10px;
+  font-size: var(--mac-font-size-small);
   display: flex;
   justify-content: space-between;
 }
@@ -129,41 +136,39 @@ footer {
 
 #toggle-advanced {
   text-align: right;
-  font-size: 10px;
+  font-size: var(--mac-font-size-small);
 }
 
 /* Dark Mode CSS for Help Dialog */
 @media (prefers-color-scheme: dark) {
   #container {
-    border-color: rgba(255, 255, 255, 0.1);
-    background-color: #202124;
+    border-color: var(--mac-border-light);
+    background-color: var(--mac-bg-tertiary);
   }
 
   #dialog {
-    background-color: var(--vimium-background-color);
-    color: var(--vimium-background-text-color);
+    background-color: var(--mac-bg-primary);
+    color: var(--mac-text-primary);
   }
 
   a {
-    color: var(--vimium-link-color);
+    color: var(--mac-accent);
   }
 
   h1,
   h2 {
-    color: white;
+    color: var(--mac-text-primary);
   }
 
   h1 .vim {
-    color: var(--vimium-link-color);
+    color: var(--mac-accent);
   }
 
   div.divider {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--mac-border-light);
   }
 
   .help-description {
-    /* Use a fainter color than --vimium-background-text-color, so the dialog text doesn't get
-       overwhelming. */
-    color: #c9cccf;
+    color: var(--mac-text-secondary);
   }
 }

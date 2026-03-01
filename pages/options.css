@@ -1,35 +1,40 @@
+/* macOS Ventura – Options Page Theme */
 /* This stylesheet is included in both options.html and action.html, so changes affect both. */
+
 :root {
   --closeButtonWidth: 25px;
-  --validationErrorColor: #ff5300;
+  --validationErrorColor: #FF3B30;
+  /* macOS system red */
 }
 
 body {
-  font: 14px "DejaVu Sans", "Arial", sans-serif;
-  color: #303942;
+  font: var(--mac-font-size-body) var(--mac-font-family);
+  color: var(--mac-text-primary);
+  background: var(--mac-bg-primary);
   margin: 0;
 }
 
 a,
 a:visited {
-  color: #15c;
+  color: var(--mac-accent);
 }
 
 a:active {
-  color: #052577;
+  color: var(--mac-accent);
+  filter: brightness(0.85);
 }
 
 div#wrapper,
 #footer-content {
   max-width: 1050px;
-  margin: 0 25px;
+  margin: 0 var(--mac-space-6);
 }
 
 header {
-  font-size: 18px;
-  font-weight: normal;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 0 15px 0;
+  font-size: var(--mac-font-size-title-2);
+  font-weight: var(--mac-font-weight-medium);
+  border-bottom: 1px solid var(--mac-border-light);
+  padding: var(--mac-space-5) 0 var(--mac-space-4) 0;
   width: 100%;
 }
 
@@ -37,21 +42,45 @@ button {
   -webkit-user-select: none;
   -webkit-appearance: none;
   font: inherit;
-  border-width: 1px;
-  border-radius: 3px;
-  padding: 2px 10px;
+  height: 28px;
+  padding: 0 var(--mac-space-3);
+  border-radius: var(--mac-radius-md);
+  border: 1px solid var(--mac-border-medium);
+  background: var(--mac-bg-tertiary);
+  color: var(--mac-text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+button:hover {
+  background: var(--mac-bg-secondary);
+}
+
+button:active {
+  filter: brightness(0.95);
+}
+
+button[disabled],
+button[disabled]:hover,
+button[disabled]:active {
+  color: var(--mac-text-disabled);
+  border-color: var(--mac-border-light);
+  background: var(--mac-bg-tertiary);
+  cursor: default;
 }
 
 input[type="checkbox"] {
   -webkit-user-select: none;
   margin: 0;
-  margin-right: 8px;
+  margin-right: var(--mac-space-2);
+  accent-color: var(--mac-accent);
 }
 
 input[type="radio"] {
   margin: 0;
   margin-left: 0;
-  margin-right: 8px;
+  margin-right: var(--mac-space-2);
+  accent-color: var(--mac-accent);
 }
 
 .boolean-label {
@@ -63,12 +92,12 @@ input[type="radio"] {
 pre,
 code,
 .code {
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", Courier, monospace;
 }
 
 pre {
   margin: 5px;
-  border-left: 1px solid #eee;
+  border-left: 2px solid var(--mac-border-light);
   padding-left: 5px;
 }
 
@@ -83,14 +112,14 @@ textarea {
 }
 
 h2 {
-  margin: 12px 0;
-  font-size: 16px;
-  font-weight: normal;
+  margin: var(--mac-space-3) 0;
+  font-size: var(--mac-font-size-title-2);
+  font-weight: var(--mac-font-weight-medium);
 }
 
 #settings-grid-container {
   display: grid;
-  font-size: 14px;
+  font-size: var(--mac-font-size-body);
   grid-template-columns: auto 320px;
   /* This is required so the "save changes" panel at the bottom of the options page doesn't cover
    * any settings content. */
@@ -112,10 +141,10 @@ h2 {
 }
 
 .example {
-  font-size: 12px;
+  font-size: var(--mac-font-size-small);
   line-height: 16px;
-  color: #979ca0;
-  margin-left: 20px;
+  color: var(--mac-text-secondary);
+  margin-left: var(--mac-space-5);
 }
 
 .reset-link {
@@ -136,12 +165,13 @@ h2 {
 
 /* This longer selector is required to take precedence over our dark scheme textarea colors which
  * are defined in vimium.css. */
-body.vimium-body textarea.validation-error, body.vimium-body input.validation-error {
+body.vimium-body textarea.validation-error,
+body.vimium-body input.validation-error {
   border: 2px solid var(--validationErrorColor);
 }
 
 div#exampleKeyMapping {
-  margin-left: 10px;
+  margin-left: var(--mac-space-3);
   margin-top: 5px;
 }
 
@@ -207,34 +237,35 @@ input#searchUrl {
 }
 
 #status {
-  margin-left: 10px;
+  margin-left: var(--mac-space-3);
   font-size: 80%;
 }
 
 input[type="text"]:read-only,
 input[type="number"]:read-only,
 textarea:read-only {
-  background-color: #eee;
-  color: #666;
+  background-color: var(--mac-bg-secondary);
+  color: var(--mac-text-disabled);
   pointer-events: none;
   -webkit-user-select: none;
 }
 
 input[type="text"],
 textarea {
-  border: 1px solid #bfbfbf;
-  border-radius: 2px;
-  color: #444;
-  background-color: white;
+  border: 1px solid var(--mac-border-medium);
+  border-radius: var(--mac-radius-md);
+  color: var(--mac-text-primary);
+  background-color: var(--mac-bg-primary);
   font: inherit;
-  padding: 3px;
+  padding: var(--mac-space-1) var(--mac-space-2);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:focus,
 input[type="text"]:focus,
 textarea:focus {
-  -webkit-transition: border-color 200ms;
-  border-color: #4d90fe;
+  border-color: var(--mac-accent);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
   outline: none;
 }
 
@@ -248,8 +279,8 @@ textarea:focus {
   overflow-y: auto;
   /* Each exclusion rule is about 30px tall, so this allows 7 rules before scrolling. */
   max-height: 215px;
-  border-radius: 2px;
-  color: #444;
+  border-radius: var(--mac-radius-md);
+  color: var(--mac-text-primary);
   width: 100%;
 }
 
@@ -279,52 +310,56 @@ textarea:focus {
 }
 
 #exclusion-rules tr.validationError td:nth-of-type(1) input {
-  border-color: orange;
+  border-color: #FF9500;
+  /* macOS system orange */
 }
 
 #exclusion-rules .validationMessage {
   display: block;
-  color: orange;
+  color: #FF9500;
   margin-top: 2px;
   margin-left: 2px;
 }
 
 #exclusion-rules .remove {
   border: none;
-  color: #979ca0;
+  color: var(--mac-text-tertiary);
+  background: none;
 }
 
 #exclusion-rules .remove:hover {
-  color: #444;
+  color: var(--mac-accent);
 }
 
 input[name="pattern"],
 input[name="passKeys"],
 .exclusion-header-text {
   width: 100%;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 14px;
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", Courier, monospace;
+  font-size: var(--mac-font-size-body);
 }
 
 .exclusion-header-text {
   padding-left: 3px;
-  color: #979ca0;
+  color: var(--mac-text-secondary);
 }
 
 #exclusion-add-button {
   float: right;
   /* Add the spacing between the table's cells to the right margin of this button. */
   margin-right: calc(var(--closeButtonWidth) + 4px);
-  margin-top: 10px;
+  margin-top: var(--mac-space-3);
 }
 
 footer {
-  background: #f5f5f5;
-  border-top: 1px solid #979ca0;
+  background: var(--mac-bg-elevated);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid var(--mac-border-light);
   position: fixed;
   bottom: 0px;
   left: 0;
-  padding: 15px 0;
+  padding: var(--mac-space-4) 0;
   z-index: 10;
   width: 100%;
 }
@@ -337,7 +372,7 @@ footer {
 
 #footer-help-text {
   flex-grow: 1;
-  font-size: 12px;
+  font-size: var(--mac-font-size-small);
 }
 
 #footer-save-options {
@@ -357,83 +392,54 @@ input#upload-backup {
   max-width: 400px;
 }
 
-@media (prefers-color-scheme: light) {
-  button {
-    background-image: -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);
-    border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);
-    color: #444;
-    text-shadow: 0 1px 0 #f0f0f0;
-  }
-
-  button:hover {
-    background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0);
-    border-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95);
-    color: black;
-  }
-
-  button:active {
-    background-image: -webkit-linear-gradient(#e7e7e7, #e7e7e7 38%, #d7d7d7);
-    box-shadow: none;
-    text-shadow: none;
-  }
-
-  button[disabled],
-  button[disabled]:hover,
-  button[disabled]:active {
-    background-image: -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);
-    border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);
-    text-shadow: 0 1px 0 #f0f0f0;
-    color: #888;
-  }
-}
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   header {
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid var(--mac-border-light);
   }
 
   pre {
-    border-left: 1px solid #666;
+    border-left: 2px solid var(--mac-border-light);
   }
 
   #exclusion-rules .remove {
     border: none;
-    color: var(--vimium-foreground-text-color);
+    color: var(--mac-text-secondary);
   }
 
   #exclusion-rules .remove:hover {
-    color: #444;
-    color: #15c;
-    color: var(--vimium-link-color);
+    color: var(--mac-accent);
   }
 
   footer {
-    background-color: var(--vimium-foreground-color);
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--mac-bg-elevated);
+    border-color: var(--mac-border-light);
   }
 
-  /* Our dark mode style for buttons matches MacOS Mojave's dark mode style for HTML buttons. MacOS
-     will automatically apply a dark mode style to unstyled buttons, but that doesn't happen on
-     other OSes, so to be cross-platform, we have to set these styles ourselves. */
   button {
-    background: none;
-    background-color: #2b2a32;
-    border-color: #8f8f9c;
-    border-width: 1px;
-    color: var(--vimium-foreground-text-color);
+    background: var(--mac-bg-tertiary);
+    border-color: var(--mac-border-medium);
+    color: var(--mac-text-primary);
     text-shadow: none;
   }
-  button:hover {}
+
+  button:hover {
+    background: var(--mac-bg-secondary);
+  }
+
   button:active {}
 
   button[disabled],
   button[disabled]:hover,
   button[disabled]:active {
-    color: #75747a;
-    border-color: #75747a;
-    background-color: #222127;
+    color: var(--mac-text-disabled);
+    border-color: var(--mac-border-light);
+    background-color: var(--mac-bg-tertiary);
+  }
+
+  button:focus,
+  input[type="text"]:focus,
+  textarea:focus {
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.35);
   }
 }
