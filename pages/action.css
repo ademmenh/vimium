@@ -1,5 +1,7 @@
+/* macOS Ventura – Action Popup Theme */
+
 :root {
-  --padding: 15px;
+  --padding: var(--mac-space-4);
 }
 
 body {
@@ -8,10 +10,14 @@ body {
   height: 300px;
   display: flex;
   flex-direction: column;
+  background: var(--mac-bg-primary);
+  font-family: var(--mac-font-family);
+  color: var(--mac-text-primary);
 }
 
 h1 {
-  font-size: 18px;
+  font-size: var(--mac-font-size-title-2);
+  font-weight: var(--mac-font-weight-medium);
 }
 
 #dialog-body {
@@ -22,24 +28,25 @@ h1 {
   flex-grow: 1;
 }
 
-#not-enabled-error, #firefox-missing-permissions-error {
+#not-enabled-error,
+#firefox-missing-permissions-error {
   padding: var(--padding);
 }
 
-#dialog-body > * {
-  margin: 10px 0;
+#dialog-body>* {
+  margin: var(--mac-space-3) 0;
 }
 
-#dialog-body > *:first-child {
+#dialog-body>*:first-child {
   margin-top: 0;
 }
 
-#dialog-body > *:last-child {
+#dialog-body>*:last-child {
   margin-bottom: 0;
 }
 
 #how-many-enabled {
-  font-weight: bold;
+  font-weight: var(--mac-font-weight-semibold);
 }
 
 #exclusion-scroll-box {
@@ -47,7 +54,10 @@ h1 {
 }
 
 footer {
-  background-color: var(--vimium-foreground-color);
+  background-color: var(--mac-bg-elevated);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid var(--mac-border-light);
   padding: var(--padding);
   box-sizing: border-box;
   display: flex;
